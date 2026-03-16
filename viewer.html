@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Viewer immagini · Iscrizioni di Puglia</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="./css/app.css" />
+</head>
+<body>
+  <div class="app app--subpage">
+    <header class="topbar">
+      <div class="brand viewer-brand">
+        <a class="actionbtn" href="./gallery.html" aria-label="Torna alla galleria"><i class="bi bi-arrow-left"></i></a>
+        <div class="brand__text">
+          <div class="brand__title" id="viewer-title">Viewer immagini</div>
+          <div class="brand__subtitle" id="viewer-subtitle">Sovrapposizione dinamica e gestione dei piani</div>
+        </div>
+      </div>
+      <div class="topbar__meta">
+        <a class="meta__chip" href="./webgis.html">WebGIS</a>
+        <a class="meta__chip" href="./gallery.html">Galleria</a>
+      </div>
+    </header>
+    <main class="viewer-layout">
+      <section class="viewer-stagePanel">
+        <div class="viewer-toolbar">
+          <div class="viewer-toolbar__group viewer-toolbar__group--wrap">
+            <label class="inline-field inline-field--grow viewer-range">
+              <span>Apertura</span>
+              <div class="viewer-range__wrap">
+                <input id="clip-amount" type="range" min="0" max="100" value="50" />
+                <span class="viewer-range__value" id="clip-amount-value">50%</span>
+              </div>
+            </label>
+            <label class="inline-check inline-check--viewer">
+              <input id="blink-toggle" type="checkbox" />
+              <span>Intermittenza</span>
+            </label>
+            <div class="viewer-toolbar__hint"><i class="bi bi-arrows-collapse-vertical"></i><span>Trascina i bordi interni per cambiare il verso della tendina</span></div>
+          </div>
+          <div class="viewer-toolbar__group">
+            <button class="iconbtn" id="viewer-fit-toggle" type="button" title="Mostra a dimensione reale" aria-pressed="false">
+              <i class="bi bi-arrows-angle-expand"></i>
+            </button>
+            <button class="btn btn--ghost" id="reset-viewer" type="button">Reset vista</button>
+          </div>
+        </div>
+        <div class="viewer-stage" id="viewer-stage">
+          <div class="viewer-stage__viewport" id="viewer-viewport">
+            <div class="viewer-stage__canvas" id="viewer-canvas"></div>
+          </div>
+        </div>
+        <div class="viewer-layers" id="viewer-layers"></div>
+      </section>
+      <aside class="panel panel--right viewer-sidepanel">
+        <div class="panel__rightHeader">
+          <div class="section__title">Dettaglio epigrafe</div>
+          <div class="section__hint" id="viewer-image-count">0 immagini</div>
+        </div>
+        <div id="viewer-detail" class="detail"></div>
+        <div id="popover" class="popover" role="dialog" aria-hidden="true"></div>
+      </aside>
+    </main>
+  </div>
+  <script type="module" src="./js/viewer.js"></script>
+</body>
+</html>

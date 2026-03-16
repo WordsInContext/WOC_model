@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Iscrizioni di Puglia - Dashboard WebGIS</title>
+
+  <!-- Bootstrap Icons (solo icone) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+
+  <!-- Leaflet.markercluster -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+
+  <link rel="stylesheet" href="./css/app.css" />
+</head>
+
+<body>
+  <div class="app">
+
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand__logo" aria-hidden="true"></div>
+        <div class="brand__text">
+         </div>
+      </div>
+
+      <!-- Filtri (icone) -->
+      <div class="topbar__actions" id="filters-actions" aria-label="Filtri"></div>
+
+      <div class="topbar__meta">
+        <a class="meta__chip" href="./index.html">Home</a>
+        <div class="meta__chip" id="meta-count">0 record</div>
+        <div class="meta__chip" id="meta-time">--:--</div>
+      </div>
+    </header>
+  <div class="mock-banner" role="note" aria-label="Avviso sui dati di demo">
+    <div class="mock-banner__inner">
+      <i class="bi bi-info-circle"></i>
+      <p><strong>Avviso:</strong> i dati visualizzati in questo prototipo sono dati di <em>mock-up</em>. Riproducono fedelmente la struttura informativa, i campi e le relazioni del progetto, ma <strong>non corrispondono a dati reali</strong> e hanno finalità esclusivamente dimostrative.</p>
+    </div>
+  </div>
+
+
+    <main class="layout">
+
+      <!-- LEFT: charts dashboard -->
+      <aside class="panel panel--left">
+
+        <section class="panel__section">
+          <div class="section__header">
+            <span class="section__title">Argomenti (argomento)</span>
+            <span class="section__hint">valori multipli separati da virgola</span>
+          </div>
+
+          <div class="section__body">
+            <div class="section__desc" id="desc-argomenti"></div>
+            <div class="section__chart">
+              <canvas id="chart-argomenti" height="160"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel__section">
+          <div class="section__header">
+            <span class="section__title">Progressione per fasi (fase)</span>
+            <span class="section__hint">numeri romani</span>
+          </div>
+
+          <div class="section__body">
+            <div class="section__desc" id="desc-fasi"></div>
+            <div class="section__chart">
+              <canvas id="chart-fasi" height="160"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel__section">
+          <div class="section__header">
+            <span class="section__title">Trend area supporto (supporto_dimensioni_cm)</span>
+            <span class="section__hint">area = larghezza x lunghezza</span>
+          </div>
+
+          <div class="section__body">
+            <div class="section__desc" id="desc-dimensioni"></div>
+            <div class="section__chart">
+              <canvas id="chart-dimensioni" height="160"></canvas>
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <!-- CENTER: map -->
+      <section class="map-wrap">
+        <div id="map" class="map" aria-label="WebGIS"></div>
+        <div class="map-hud">
+          <div class="hud__row">
+            <span class="hud__label">Legenda</span>
+            <span class="hud__pill hud__pill--greco">Greco</span>
+            <span class="hud__pill hud__pill--messapico">Messapico</span>
+          </div>
+          <div class="hud__row hud__row--small" id="hud-status">Caricamento...</div>
+        </div>
+      </section>
+
+      <!-- RIGHT: record details -->
+      <aside class="panel panel--right">
+        <div class="panel__rightHeader">
+          <div class="section__title">Dettaglio record</div>
+          <div class="section__hint">clicca un punto o un cluster</div>
+        </div>
+
+        <div id="detail" class="detail">
+          <div class="empty">
+            <div class="empty__title">Nessuna selezione</div>
+            <div class="empty__text">Seleziona un punto sulla mappa per visualizzare i campi del record. Se clicchi un cluster, vedrai piu schede.</div>
+          </div>
+        </div>
+
+        <div id="popover" class="popover" role="dialog" aria-hidden="true"></div>
+      </aside>
+
+    </main>
+  </div>
+
+  <!-- Modal filtri (generico) -->
+  <div id="filter-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal__backdrop" data-modal-close="1"></div>
+    <div class="modal__panel" role="document">
+      <div class="modal__head">
+        <div class="modal__title" id="filter-modal-title">Filtri</div>
+        <button class="iconbtn" type="button" aria-label="Chiudi" data-modal-close="1">
+          <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <div class="modal__sub">
+        <div class="modal__search">
+          <i class="bi bi-search" aria-hidden="true"></i>
+          <input id="filter-modal-search" type="search" placeholder="Cerca valore..." autocomplete="off" />
+        </div>
+        <div class="modal__meta" id="filter-modal-meta"></div>
+      </div>
+
+      <div class="modal__body" id="filter-modal-body"></div>
+
+      <div class="modal__foot">
+        <button class="btn btn--ghost" type="button" id="filter-modal-clear">Azzera</button>
+        <div class="modal__footRight">
+          <button class="btn btn--ghost" type="button" data-modal-close="1">Annulla</button>
+          <button class="btn btn--primary" type="button" id="filter-modal-apply">Applica</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- libs -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- app -->
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>

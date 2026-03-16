@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Galleria immagini · Iscrizioni di Puglia</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="./css/app.css" />
+</head>
+<body>
+  <div class="app app--subpage">
+    <header class="topbar">
+      <div class="brand">
+        <a class="actionbtn" href="./webgis.html" aria-label="Torna al WebGIS"><i class="bi bi-arrow-left"></i></a>
+        <div class="brand__text">
+          <div class="brand__title">Galleria immagini</div>
+          <div class="brand__subtitle">Preview globale delle risorse collegate alle epigrafi</div>
+        </div>
+      </div>
+      <div class="topbar__actions topbar__actions--subpage">
+        <label class="gallery-search">
+          <i class="bi bi-search"></i>
+          <input id="gallery-search" type="search" placeholder="Cerca per id, luogo, tipo, cronologia..." />
+        </label>
+      </div>
+      <div class="topbar__meta">
+        <div class="meta__chip" id="gallery-count">0 immagini</div>
+      </div>
+    </header>
+  <div class="mock-banner" role="note" aria-label="Avviso sui dati di demo">
+    <div class="mock-banner__inner">
+      <i class="bi bi-info-circle"></i>
+      <p><strong>Avviso:</strong> i dati visualizzati in questo prototipo sono dati di <em>mock-up</em>. Riproducono fedelmente la struttura informativa, i campi e le relazioni del progetto, ma <strong>non corrispondono a dati reali</strong> e hanno finalità esclusivamente dimostrative.</p>
+    </div>
+  </div>
+
+    <main class="gallery-page">
+      <section id="gallery-grid" class="gallery-grid"></section>
+    </main>
+  </div>
+  <script type="module" src="./js/gallery.js"></script>
+</body>
+</html>

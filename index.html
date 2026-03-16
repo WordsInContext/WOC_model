@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Word in Context · Epigrafi preromane di Puglia</title>
+  <meta name="description" content="Piattaforma digitale per esplorare epigrafi preromane di Puglia tra mappa, immagini, testi, geografia storica e strumenti di consultazione." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link rel="stylesheet" href="./css/home.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-brand" href="#intro" aria-label="Vai all'introduzione">
+        <span class="site-brand__mark"><i class="bi bi-bounding-box-circles"></i></span>
+        <span class="site-brand__text">
+          <strong>Word in Context</strong>
+          <small>Epigrafi preromane di Puglia</small>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Navigazione rapida">
+        <a href="#intro" class="site-nav__link is-active" data-home-nav="intro"><i class="bi bi-house-door"></i><span>Intro</span></a>
+        <a href="#timeline" class="site-nav__link" data-home-nav="timeline"><i class="bi bi-clock-history"></i><span>Timeline</span></a>
+        <a href="#geografia" class="site-nav__link" data-home-nav="geografia"><i class="bi bi-geo-alt"></i><span>Geografia</span></a>
+        <a href="#lingue" class="site-nav__link" data-home-nav="lingue"><i class="bi bi-translate"></i><span>Lingue</span></a>
+        <a href="#supporto-testo" class="site-nav__link" data-home-nav="supporto-testo"><i class="bi bi-layers"></i><span>Supporto e testo</span></a>
+        <a href="#crediti" class="site-nav__link" data-home-nav="crediti"><i class="bi bi-people"></i><span>Crediti</span></a>
+      </nav>
+
+      <div class="site-header__actions">
+        <a class="header-btn header-btn--ghost" href="./gallery.html"><i class="bi bi-images"></i><span>Galleria</span></a>
+        <a class="header-btn header-btn--accent" href="./webgis.html"><i class="bi bi-globe-europe-africa"></i><span>Apri il WebGIS</span></a>
+      </div>
+    </div>
+  </header>
+  <div class="mock-banner" role="note" aria-label="Avviso sui dati di demo">
+    <div class="mock-banner__inner">
+      <i class="bi bi-info-circle"></i>
+      <p><strong>Avviso:</strong> i dati visualizzati in questo prototipo sono dati di <em>mock-up</em>. Riproducono fedelmente la struttura informativa, i campi e le relazioni del progetto, ma <strong>non corrispondono a dati reali</strong> e hanno finalità esclusivamente dimostrative.</p>
+    </div>
+  </div>
+
+  <main>
+    <section id="intro" class="home-section home-section--hero section-anchor">
+      <div class="section-inner section-inner--hero">
+        <div class="hero-copy">
+          <div class="section-kicker section-kicker--light">Piattaforma digitale per ricerca e public epigraphy</div>
+          <h1>Un portale per leggere insieme epigrafi, contesti, immagini e territorio.</h1>
+          <p class="hero-lead">
+            Word in Context è un ambiente digitale in corso di sviluppo dedicato alle epigrafi preromane di Puglia. Il progetto mette in relazione testi, supporti materiali, dati spaziali e risorse visive in una forma accessibile a pubblici diversi: da chi si avvicina per la prima volta a questo patrimonio a chi cerca strumenti di consultazione specialistica.
+          </p>
+          <p class="hero-body">
+            La piattaforma nasce con una doppia vocazione. Da un lato propone un accesso immediato, orientato all’esplorazione guidata e alla valorizzazione del patrimonio culturale; dall’altro organizza metadati, cronologie, distribuzioni geografiche, immagini e livelli di descrizione utili per l’analisi avanzata. L’obiettivo è costruire un sistema leggero, aperto e progressivamente estendibile, capace di integrare nel tempo nuove risorse come modelli 3D, percorsi narrativi e livelli di interrogazione più fini sul testo epigrafico.
+          </p>
+          <div class="hero-actions">
+            <a class="header-btn header-btn--accent" href="./webgis.html"><i class="bi bi-map"></i><span>Esplora il WebGIS</span></a>
+            <a class="header-btn header-btn--ghost" href="./gallery.html"><i class="bi bi-collection"></i><span>Consulta la galleria</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-inner section-inner--metrics">
+        <div class="stats-row" id="stats-row">
+          <article class="stat-item">
+            <span class="stat-item__label">Epigrafi</span>
+            <strong id="stat-epigrafi">--</strong>
+            <small>record consultabili</small>
+          </article>
+          <article class="stat-item">
+            <span class="stat-item__label">Immagini</span>
+            <strong id="stat-immagini">--</strong>
+            <small>risorse visive</small>
+          </article>
+          <article class="stat-item">
+            <span class="stat-item__label">Province</span>
+            <strong id="stat-province">--</strong>
+            <small>aree rappresentate</small>
+          </article>
+          <article class="stat-item">
+            <span class="stat-item__label">Arco cronologico</span>
+            <strong id="stat-arco">--</strong>
+            <small>estensione del corpus</small>
+          </article>
+        </div>
+
+        <div class="pathways-row">
+          <article class="pathway-item">
+            <div class="pathway-item__icon"><i class="bi bi-compass"></i></div>
+            <h3>Esplorazione guidata</h3>
+            <p>Una lettura introduttiva per orientarsi tra luoghi, cronologie, lingue e tipologie di materiali.</p>
+          </article>
+          <article class="pathway-item">
+            <div class="pathway-item__icon"><i class="bi bi-sliders"></i></div>
+            <h3>Consultazione avanzata</h3>
+            <p>Filtri, schede, immagini collegate e strumenti per seguire relazioni tra dati, testi e supporti.</p>
+          </article>
+          <article class="pathway-item">
+            <div class="pathway-item__icon"><i class="bi bi-diagram-3"></i></div>
+            <h3>Patrimonio connesso</h3>
+            <p>Un ambiente pensato per tenere insieme oggetto, iscrizione, contesto e futuri sviluppi 3D.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline" class="home-section home-section--dark section-anchor">
+      <div class="section-inner">
+        <div class="section-head section-head--light">
+          <span class="section-kicker section-kicker--light">Timeline semplificata</span>
+          <h2>Le fasi cronologiche si leggono come un percorso ramificato.</h2>
+          <p>
+            Ogni diramazione rappresenta l’avvio di una fase diversa. La sua lunghezza e il suo spessore restituiscono in modo sintetico il peso relativo dei record ricadenti in quel segmento cronologico.
+          </p>
+        </div>
+        <div class="timeline-wrap">
+          <div class="timeline-branches" id="timeline-branches"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="geografia" class="home-section section-anchor">
+      <div class="section-inner">
+        <div class="section-head">
+          <span class="section-kicker">Inquadramento geografico</span>
+          <h2>Un primo sguardo alla distribuzione territoriale del corpus.</h2>
+          <p>
+            La mappa non mostra soltanto punti: restituisce relazioni tra luoghi, cronologie, lingue e supporti. Questo rende possibile confrontare aree diverse e individuare concentrazioni, assenze e percorsi di diffusione.
+          </p>
+        </div>
+
+        <div class="geo-preview">
+          <div class="geo-preview__map" id="home-province-map" aria-label="Mappa delle province con densità di epigrafi"></div>
+          <div class="geo-preview__legend" id="home-province-legend"></div>
+          <div class="geo-preview__footer">
+            <div class="geo-preview__note">Join tra i record epigrafici e le province basata sul nome della provincia.</div>
+            <a class="inline-link" href="./webgis.html"><i class="bi bi-arrow-right"></i><span>Apri la mappa completa</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="lingue" class="home-section section-anchor">
+      <div class="section-inner">
+        <div class="section-head">
+          <span class="section-kicker">Lingue e popoli</span>
+          <h2>Greco e messapico sono letti in parallelo, senza perdere le rispettive specificità.</h2>
+          <p>
+            Il portale mette in dialogo due tradizioni scrittorie e culturali fondamentali per la storia dell’Italia meridionale. La loro co-presenza aiuta a osservare somiglianze, differenze, contesti di uso e distribuzioni territoriali su scala regionale.
+          </p>
+        </div>
+
+        <div class="language-panels">
+          <article class="language-panel language-panel--greco">
+            <div class="language-panel__header">
+              <span class="language-panel__badge">Greco</span>
+              <strong id="count-greco">--</strong>
+            </div>
+            <p>
+              Una tradizione inserita in reti mediterranee più ampie, leggibile attraverso formulari, supporti, contesti di rinvenimento e scelte scrittorie che dialogano con il quadro culturale dell’Italia meridionale.
+            </p>
+          </article>
+          <article class="language-panel language-panel--messapico">
+            <div class="language-panel__header">
+              <span class="language-panel__badge">Messapico</span>
+              <strong id="count-messapico">--</strong>
+            </div>
+            <p>
+              Un patrimonio locale essenziale per comprendere identità, pratiche di scrittura e geografie culturali della Puglia preromana, osservabili nel loro rapporto con spazio, supporti e cronologia.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="supporto-testo" class="home-section section-anchor">
+      <div class="section-inner">
+        <div class="section-head">
+          <span class="section-kicker">Supporto e testo</span>
+          <h2>Due livelli distinti, da analizzare separatamente e ricomporre nella consultazione.</h2>
+          <p>
+            Un’iscrizione è contemporaneamente oggetto materiale e contenuto testuale. Per questo la piattaforma distingue il supporto epigrafico dal testo, ma li tiene connessi nella navigazione e nella scheda di dettaglio.
+          </p>
+        </div>
+
+        <div class="concept-grid">
+          <article class="concept-panel">
+            <div class="concept-panel__media">
+              <img src="./data/images/esempio_supporto.png" alt="Esempio che mette in evidenza il supporto epigrafico" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('is-fallback');" />
+            </div>
+            <div class="concept-panel__body">
+              <h3>Il supporto epigrafico</h3>
+              <p>Materiale, forma, stato di conservazione, contesto archeologico, luogo di rinvenimento e caratteristiche fisiche dell’oggetto.</p>
+              <span class="coming-soon">Pagina di dettaglio in preparazione</span>
+            </div>
+          </article>
+
+          <article class="concept-panel">
+            <div class="concept-panel__media">
+              <img src="./data/images/esempio_testo.png" alt="Esempio che mette in evidenza il testo epigrafico" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('is-fallback');" />
+            </div>
+            <div class="concept-panel__body">
+              <h3>Il testo</h3>
+              <p>Trascrizione, marcatura, traduzione e futuri livelli di interrogazione semantica per leggere l’iscrizione come contenuto strutturato.</p>
+              <span class="coming-soon">Pagina di dettaglio in preparazione</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="crediti" class="home-section home-section--footer section-anchor">
+      <div class="section-inner">
+        <div class="section-head section-head--light">
+          <span class="section-kicker section-kicker--light">Crediti</span>
+          <h2>Un progetto in sviluppo, costruito tra ricerca, curatela scientifica e infrastruttura digitale.</h2>
+        </div>
+
+      <section id="crediti" class="home-section home-section--footer section-anchor">
+        <div class="section-inner">
+          <div class="section-head section-head--light">
+            <span class="section-kicker section-kicker--light">Crediti</span>
+            <h2>Un progetto in sviluppo, costruito tra ricerca, curatela scientifica e infrastruttura digitale.</h2>
+          </div>
+
+          <div class="credits-row">
+            <article class="credit-item">
+              <span class="credit-item__role">Dottorato</span>
+              <h3>PasaP med · Università degli Studi di Bari Aldo Moro</h3>
+              <p>
+                Contesto istituzionale e cornice di ricerca entro cui si colloca il progetto,
+                con attenzione al patrimonio archeologico, storico e paesaggistico mediterraneo.
+              </p>
+            </article>
+
+            <article class="credit-item">
+              <span class="credit-item__role">Responsabile scientifica</span>
+              <h3>Federica Fanizzi</h3>
+              <p>
+                Impostazione scientifica, coordinamento del progetto e definizione del modello interpretativo.
+              </p>
+            </article>
+
+            <article class="credit-item">
+              <span class="credit-item__role">Curatela digitale</span>
+              <h3>Erasmo di Fonso</h3>
+              <p>
+                Progettazione e sviluppo dell’infrastruttura digitale, disegno dell’interfaccia
+                e integrazione dei dati nel prototipo web.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script type="module" src="./js/home.js"></script>
+</body>
+</html>
