@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Word in Context · Epigrafi preromane di Puglia</title>
-  <meta name="description" content="Piattaforma digitale per esplorare epigrafi preromane di Puglia tra mappa, immagini, testi, geografia storica e strumenti di consultazione." />
+  <meta name="description" content="Piattaforma digitale per esplorare epigrafi preromane di Puglia tra mappa, testi, geografia storica e strumenti di consultazione." />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
   <link rel="stylesheet" href="./css/home.css" />
@@ -13,7 +13,9 @@
   <header class="site-header">
     <div class="site-header__inner">
       <a class="site-brand" href="#intro" aria-label="Vai all'introduzione">
-        <span class="site-brand__mark"><i class="bi bi-bounding-box-circles"></i></span>
+        <span class="site-brand__mark">
+          <img src="/data/images/logo_woc.png" alt="Logo Word in Context" style="height: 42px; width: auto; display: block;" />
+        </span>
         <span class="site-brand__text">
           <strong>Word in Context</strong>
           <small>Epigrafi preromane di Puglia</small>
@@ -35,6 +37,7 @@
       </div>
     </div>
   </header>
+
   <div class="mock-banner" role="note" aria-label="Avviso sui dati di demo">
     <div class="mock-banner__inner">
       <i class="bi bi-info-circle"></i>
@@ -46,13 +49,13 @@
     <section id="intro" class="home-section home-section--hero section-anchor">
       <div class="section-inner section-inner--hero">
         <div class="hero-copy">
-          <div class="section-kicker section-kicker--light">Piattaforma digitale per ricerca e public epigraphy</div>
-          <h1>Un portale per leggere insieme epigrafi, contesti, immagini e territorio.</h1>
+          <div class="section-kicker section-kicker--light">PIATTAFORMA DIGITALE DI RICERCA E PUBLIC EPIGRAPHY</div>
+          <h1>Un portale per leggere insieme epigrafi, contesti e territorio.</h1>
           <p class="hero-lead">
-            Word in Context è un ambiente digitale in corso di sviluppo dedicato alle epigrafi preromane di Puglia. Il progetto mette in relazione testi, supporti materiali, dati spaziali e risorse visive in una forma accessibile a pubblici diversi: da chi si avvicina per la prima volta a questo patrimonio a chi cerca strumenti di consultazione specialistica.
+            Word in Context è un ambiente digitale in corso di sviluppo dedicato alle epigrafi preromane di Puglia. Il progetto mette in relazione testi, supporti materiali, dati spaziali e risorse in una forma accessibile a pubblici diversi: da chi si avvicina per la prima volta a questo patrimonio a chi cerca strumenti di consultazione specialistica.
           </p>
           <p class="hero-body">
-            La piattaforma nasce con una doppia vocazione. Da un lato propone un accesso immediato, orientato all’esplorazione guidata e alla valorizzazione del patrimonio culturale; dall’altro organizza metadati, cronologie, distribuzioni geografiche, immagini e livelli di descrizione utili per l’analisi avanzata. L’obiettivo è costruire un sistema leggero, aperto e progressivamente estendibile, capace di integrare nel tempo nuove risorse come modelli 3D, percorsi narrativi e livelli di interrogazione più fini sul testo epigrafico.
+            La piattaforma nasce con una doppia vocazione. Da un lato propone un accesso immediato, orientato all’esplorazione guidata e alla valorizzazione del patrimonio culturale; dall’altro organizza metadati, cronologie, distribuzioni geografiche e livelli di descrizione utili per l’analisi avanzata. L’obiettivo è costruire un sistema leggero, aperto e progressivamente estendibile, capace di integrare nel tempo nuove risorse come modelli 3D, percorsi narrativi e livelli di interrogazione più fini sul testo epigrafico.
           </p>
           <div class="hero-actions">
             <a class="header-btn header-btn--accent" href="./webgis.html"><i class="bi bi-map"></i><span>Esplora il WebGIS</span></a>
@@ -94,7 +97,7 @@
           <article class="pathway-item">
             <div class="pathway-item__icon"><i class="bi bi-sliders"></i></div>
             <h3>Consultazione avanzata</h3>
-            <p>Filtri, schede, immagini collegate e strumenti per seguire relazioni tra dati, testi e supporti.</p>
+            <p>Filtri, schede e strumenti per seguire relazioni tra dati, testi e supporti.</p>
           </article>
           <article class="pathway-item">
             <div class="pathway-item__icon"><i class="bi bi-diagram-3"></i></div>
@@ -147,7 +150,7 @@
           <span class="section-kicker">Lingue e popoli</span>
           <h2>Greco e messapico sono letti in parallelo, senza perdere le rispettive specificità.</h2>
           <p>
-            Il portale mette in dialogo due tradizioni scrittorie e culturali fondamentali per la storia dell’Italia meridionale. La loro co-presenza aiuta a osservare somiglianze, differenze, contesti di uso e distribuzioni territoriali su scala regionale.
+            Il portale mette in dialogo due tradizioni scrittorie e culturali dell’Italia meridionale preromana. La loro co-presenza aiuta a osservare somiglianze, differenze, contesti di uso e distribuzioni territoriali su scala regionale.
           </p>
         </div>
 
@@ -158,7 +161,7 @@
               <strong id="count-greco">--</strong>
             </div>
             <p>
-              Una tradizione inserita in reti mediterranee più ampie, leggibile attraverso formulari, supporti, contesti di rinvenimento e scelte scrittorie che dialogano con il quadro culturale dell’Italia meridionale.
+              Una lingua di cui conosciamo la grammatica e tutti i suoi aspetti fonologici, morfologici, sintattici e semantici.
             </p>
           </article>
           <article class="language-panel language-panel--messapico">
@@ -167,7 +170,7 @@
               <strong id="count-messapico">--</strong>
             </div>
             <p>
-              Un patrimonio locale essenziale per comprendere identità, pratiche di scrittura e geografie culturali della Puglia preromana, osservabili nel loro rapporto con spazio, supporti e cronologia.
+              Una lingua frammentaria della quale disponiamo di una ricostruzione fonologica non sempre sicura, di una morfologia talvolta frammentata e di una sintassi e semantica lacunose ed in costante studio.
             </p>
           </article>
         </div>
@@ -214,45 +217,36 @@
       <div class="section-inner">
         <div class="section-head section-head--light">
           <span class="section-kicker section-kicker--light">Crediti</span>
-          <h2>Un progetto in sviluppo, costruito tra ricerca, curatela scientifica e infrastruttura digitale.</h2>
+          <h2>Un progetto in sviluppo, costruito tra ricerca scientifica e infrastruttura digitale.</h2>
         </div>
 
-      <section id="crediti" class="home-section home-section--footer section-anchor">
-        <div class="section-inner">
-          <div class="section-head section-head--light">
-            <span class="section-kicker section-kicker--light">Crediti</span>
-            <h2>Un progetto in sviluppo, costruito tra ricerca, curatela scientifica e infrastruttura digitale.</h2>
-          </div>
+        <div class="credits-row">
+          <article class="credit-item">
+            <span class="credit-item__role">Dottorato</span>
+            <h3>PasaP med · Università degli Studi di Bari Aldo Moro</h3>
+            <p>
+              Contesto istituzionale e cornice di ricerca entro cui si colloca il progetto.
+            </p>
+          </article>
 
-          <div class="credits-row">
-            <article class="credit-item">
-              <span class="credit-item__role">Dottorato</span>
-              <h3>PasaP med · Università degli Studi di Bari Aldo Moro</h3>
-              <p>
-                Contesto istituzionale e cornice di ricerca entro cui si colloca il progetto,
-                con attenzione al patrimonio archeologico, storico e paesaggistico mediterraneo.
-              </p>
-            </article>
+          <article class="credit-item">
+            <span class="credit-item__role">Responsabile scientifica</span>
+            <h3>Federica Fanizzi</h3>
+            <p>
+              Impostazione scientifica, coordinamento del progetto e definizione del modello interpretativo.
+            </p>
+          </article>
 
-            <article class="credit-item">
-              <span class="credit-item__role">Responsabile scientifica</span>
-              <h3>Federica Fanizzi</h3>
-              <p>
-                Impostazione scientifica, coordinamento del progetto e definizione del modello interpretativo.
-              </p>
-            </article>
-
-            <article class="credit-item">
-              <span class="credit-item__role">Curatela digitale</span>
-              <h3>Erasmo di Fonso</h3>
-              <p>
-                Progettazione e sviluppo dell’infrastruttura digitale, disegno dell’interfaccia
-                e integrazione dei dati nel prototipo web.
-              </p>
-            </article>
-          </div>
+          <article class="credit-item">
+            <span class="credit-item__role">Curatela digitale</span>
+            <h3>Erasmo di Fonso</h3>
+            <p>
+              Progettazione e sviluppo dell’infrastruttura digitale, disegno dell’interfaccia
+              e integrazione dei dati nel prototipo web.
+            </p>
+          </article>
         </div>
-      </section>
+      </div>
     </section>
   </main>
 

@@ -45,10 +45,9 @@ function renderTimeline(props) {
 
   const periods = [
     { label: 'Arcaico', range: 'fino a 480 a.C.', test: p => num(p.datazione_inizio) <= -480 },
-    { label: 'Classico iniziale', range: '480–400 a.C.', test: p => num(p.datazione_inizio) > -480 && num(p.datazione_inizio) <= -400 },
-    { label: 'Classico pieno', range: '400–325 a.C.', test: p => num(p.datazione_inizio) > -400 && num(p.datazione_inizio) <= -325 },
-    { label: 'Ellenistico', range: '325–150 a.C.', test: p => num(p.datazione_inizio) > -325 && num(p.datazione_inizio) <= -150 },
-    { label: 'Transizione', range: 'dopo 150 a.C.', test: p => num(p.datazione_inizio) > -150 }
+    { label: 'Classico', range: '480–400 a.C.', test: p => num(p.datazione_inizio) > -480 && num(p.datazione_inizio) <= -400 },
+    { label: 'Tardo Classico', range: '400–325 a.C.', test: p => num(p.datazione_inizio) > -400 && num(p.datazione_inizio) <= -325 },
+    { label: 'Ellenistico', range: '325–25 a.C.', test: p => num(p.datazione_inizio) > -325 && num(p.datazione_inizio) <= -150 },
   ];
 
   const rows = periods.map((period, index) => ({
